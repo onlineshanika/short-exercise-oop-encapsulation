@@ -4,6 +4,9 @@ import java.text.MessageFormat;
 
 public class WeatherReporter {
 
+    private static final String LONDON = "London";
+    private static final String CALIFORNIA = "California";
+    private static final String CAPE_TOWN = "Cape Town";
     private final String location;
     private final double temperature;
 
@@ -17,49 +20,33 @@ public class WeatherReporter {
                 location, getLocationBasedEmoji(), getTagline(), celsiusToFahrenheit());
     }
 
-    private final String LONDON ="London";
-    private final String CALIFORNIA ="California";
-    private final String CAPE_TOWN ="Cape Town";
-   
-   
     private String getLocationBasedEmoji() {
-        if (location.equalsIgnoreCase(LONDON)) {
-
+        if (LONDON.equalsIgnoreCase(location)) {
             return "🌦";
-
-        } else if (location.equalsIgnoreCase(CALIFORNIA)) {
-
+        } else if (CALIFORNIA.equalsIgnoreCase(location)) {
             return "🌅";
-
-        } else if (location.equalsIgnoreCase(CAPE_TOWN)) {
-
+        } else if (CAPE_TOWN.equalsIgnoreCase(location)) {
             return "🌤";
-
         }
         return "🔆";
     }
 
     private String getTagline() {
         if (temperature > 30) {
-
             return "It's too hot 🥵!";
-
         } else if (temperature < 10) {
-
             return "It's too cold 🥶!";
-
         }
         return "Ahhh...it's just right 😊!";
     }
 
 
-    private double celsiusToFahrenheit(){
-        return  (9.0 / 5.0) * temperature + 32;
+    private double celsiusToFahrenheit() {
+        return (9.0 / 5.0) * temperature + 32;
     }
 
-
     public static void main(String[] args) {
-        WeatherReporter weatherReporter = new WeatherReporter("London",18);
+        WeatherReporter weatherReporter = new WeatherReporter("London", 18);
         System.out.println(weatherReporter.print());
     }
 }
